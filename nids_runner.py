@@ -9,7 +9,7 @@ from datetime import datetime
 
 # CONFIGURATION
 INTERFACE = os.getenv("INTERFACE", "eth0")  # Uses eth0 by default, can be overridden
-CHUNK_TIME = "10"                           # Rotate PCAP every 30 seconds
+CHUNK_TIME = "10"                           # Rotate PCAP every 10 seconds
 MODEL_PATH = "rf_model.pkl"
 CIC_BIN_PATH = "./CICFlowMeter/bin/cfm"     # Path inside the Docker container
 
