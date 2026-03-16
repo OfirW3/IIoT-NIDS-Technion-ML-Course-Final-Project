@@ -18,24 +18,23 @@ def now():
 
 # filtering lists (expanded to drop log metrics and leaking features)
 FATAL_KEYWORDS = [
-    # Identifiers & Hardware
-    "mac", "port", "addr", "id", "uuid", "token", "serial", "socket", "session",
-    "device", "host",
-    # Specific network routing
-    "ip_src", "ip_dst", "src_ip", "dst_ip", 
     # Label and classification leaks
     "label", "attack", "class", "category", "status",
+    # OS Fingerprinting leaks (Drop completely, even averages/mins/maxs)
+    "ttl", "window", "mss",
     # Extraneous host logging metrics (all zeros anyway)
     "log"
 ]
 
 TOXIC_KEYWORDS = [
-    # Metadata that could be memorized by the model
-    "time", "date", "timestamp", "ttl", "window", "mss", "seq", "ack"
+    # Temporal metadata that could be memorized by the model
+    "time", "date", "timestamp", "seq", "ack",
+    # Identifiers & Hardware (Drop raw strings, but keep _count/_length via SAFE_KEYWORDS)
+    "mac", "port", "addr", "id", "uuid", "token", "serial", "socket", "session",
+    "device", "host", "ip", "ips"
 ]
 
 SAFE_KEYWORDS = ["duration", "interval", "rate", "delta", "mean", "std", "avg", "count", "length", "size"]
-
 def ensure_dirs_exist():
     """Do not create directories — only verify they exist."""
     if not RAW_DIR.exists():

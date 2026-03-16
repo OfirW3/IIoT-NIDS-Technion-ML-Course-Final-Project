@@ -404,14 +404,14 @@ def main():
                 for col in df.columns:
                     non_blank = df[df[col] != ""][col]
                     if non_blank.empty:
-                        df.loc[:, col] = 0
+                        df[col] = 0
                         continue
                     # try to coerce the non-empty subset to numeric
                     try:
                         pd.to_numeric(non_blank)
                         # column appears numeric -> replace blanks with 0 and coerce whole column to numeric
-                        df.loc[:, col] = df[col].replace("", 0)
-                        df.loc[:, col] = pd.to_numeric(df[col], errors="coerce").fillna(0)
+                        df[col] = df[col].replace("", 0)  # <--- Removed .loc[:, ]
+                        df[col] = pd.to_numeric(df[col], errors="coerce").fillna(0)  # <--- Removed .loc[:, ]
                     except Exception:
                         # non-numeric textual column - leave as-is
                         pass
