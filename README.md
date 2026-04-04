@@ -1,4 +1,4 @@
-# 🛡️ NIDS Command Center: ML-Powered IIoT Security
+# 🛡️ML-Powered NIDS for IIoT Security
 
 ![Python Version](https://img.shields.io/badge/python-3.8%2B-blue.svg)
 ![Dataset](https://img.shields.io/badge/dataset-CIC__IIoT__2025-orange.svg)
@@ -98,7 +98,7 @@ IIoT-NIDS-Technion-ML-Course-Final-Project/
 
 ---
 
-## 🖥️ Usage & Demo
+## 🖥️ Usage
 
 To launch the NIDS, run the main script as a standard user (the script will handle `sudo` prompts dynamically for the packet sniffer inside the terminal):
 
