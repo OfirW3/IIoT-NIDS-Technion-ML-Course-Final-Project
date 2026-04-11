@@ -1,22 +1,15 @@
-# 🛡️ML-Powered NIDS for IIoT Security
-
-![Python Version](https://img.shields.io/badge/python-3.8%2B-blue.svg)
-![Dataset](https://img.shields.io/badge/dataset-CIC__IIoT__2025-orange.svg)
-![Institution](https://img.shields.io/badge/institution-Technion-005096.svg)
-
-## 📖 About the Project
-
+# ML-Powered NIDS for IIoT Security
 This project is an end-to-end, real-time Network Intrusion Detection System (NIDS) designed explicitly for Industrial IoT (IIoT) networks. 
-
+## About the Project
 **The Application Pipeline:** The system continuously captures live network traffic, processes the raw packets into structured behavioral flows (CSV), and feeds them into a machine learning inference engine. The model then classifies the traffic in real-time as either benign or belonging to specific attack families (such as DDoS, Brute Force, Malware, Reconnaissance, MiTM, or Web attacks), displaying the results dynamically in a command-center GUI.
 
-### 💾 Data Source
+### Data Source
 The machine learning models were trained and evaluated using the highly regarded **CIC IIoT 2025** dataset, provided by the Canadian Institute for Cybersecurity (CIC). This dataset represents a modern, realistic Industry 4.0 network environment.
 * 🔗 [Link to the CIC IIoT 2025 Dataset](https://www.unb.ca/cic/datasets/iiot-dataset-2025.html)
 
 ---
 
-## 🧠 Machine Learning Engine 
+## Machine Learning Engine 
 
 The core of this NIDS is a machine learning pipeline, strictly designed to recognize generalized threat behaviors rather than memorizing laboratory artifacts.
 
@@ -38,14 +31,14 @@ During the research phase, four distinct machine learning architectures were tra
 * **TabNet:** Selected to evaluate if cutting-edge deep learning, specifically engineered for tabular data, which was developed by Google researchers could outperform traditional tree-based algorithms. This architecture processes data through sequential steps, using an attentive transformer paired with a sparsemax activation function to perform instance-wise feature selection—meaning it learns to focus only on the most relevant metrics for a given network flow. A feature transformer then processes these selections, while prior scales dynamically adjust to ensure the network doesn't over-rely on the exact same features repeatedly across different steps.
 * **Unsupervised Isolation Forest:** Evaluated for its potential to detect unknown, zero-day attacks without relying on labeled threat data. This is a pure anomaly detection algorithm. Instead of trying to profile what "normal" traffic looks like, it directly isolates anomalies by building trees that randomly partition the data. Because attacks are mathematically distinct and less frequent, they require far fewer partitions to be separated from the rest of the data. The model assigns an anomaly score based on this principle: the shorter the path length required to isolate a specific network flow, the more anomalous it is.
 
-> 📊 **Final Test Evaluation**
+> **Final Test Evaluation**
 > 
 > <img width="1584" height="590" alt="image" src="https://github.com/user-attachments/assets/bb763e0b-39d7-4c41-8a5e-40f1714fd862" />
 
 
 ---
 
-## 🏗️ Code Structure & Pipeline
+## Code Structure & Pipeline
 
 The repository is modular, separating the GUI from the pipeline's daemons 
 
@@ -73,7 +66,7 @@ IIoT-NIDS-Technion-ML-Course-Final-Project/
 └── data/
 ```
 
-## 🚀 Installation Guide
+## Installation Guide
 
 1. **Clone the repository:**
    ```bash
@@ -98,7 +91,7 @@ IIoT-NIDS-Technion-ML-Course-Final-Project/
 
 ---
 
-## 🖥️ Usage
+## Usage
 
 To launch the NIDS, run the main script as a standard user (the script will handle `sudo` prompts dynamically for the packet sniffer inside the terminal):
 
@@ -109,7 +102,7 @@ Once the GUI opens, click **START PIPELINE**.
 
 ---
 
-## 🚧 Limitations & Future Work
+## Limitations & Future Work
 
 While the Random Forest model achieves high accuracy on offline datasets, running the inference engine in real-time presents unique challenges:
 
@@ -118,6 +111,6 @@ While the Random Forest model achieves high accuracy on offline datasets, runnin
 
 ---
 
-## 🎓 Acknowledgments
+## Acknowledgments
 
 This project was developed as the final project for a Machine Learning course at the **Technion - Israel Institute of Technology**.
